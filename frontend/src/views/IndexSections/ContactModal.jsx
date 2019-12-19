@@ -16,10 +16,17 @@ import {
 } from "reactstrap";
 
 class ContactModal extends React.Component {
-    state = {
-        defaultModal: false,
-        isBoxVisible: false
-    };
+    constructor() {
+        super();
+        this.state = {
+            defaultModal: false,
+            isBoxVisible: false,
+            email: "",
+            message: "",
+            image: ""
+        };
+    }
+
 
     toggleModal = state => {
         this.setState({
@@ -31,7 +38,17 @@ class ContactModal extends React.Component {
         this.setState(prevState => ({
             isBoxVisible: !prevState.isBoxVisible
         }));
-    }
+    };
+
+    handleSubmit(event){
+        event.preventDefault();
+        this.setState({
+            email: event.target.email.value,
+            message: event.target.message.value,
+            image: ""
+        });
+    };
+
 
     render() {
         const { isBoxVisible } = this.state;
@@ -57,7 +74,7 @@ class ContactModal extends React.Component {
                             </div>
                         </CardHeader>
                         <CardBody className="px-lg-5 py-lg-5">
-                            <Form role="form">
+                            <Form role="form" onSubmit={this.handleSubmit}>
                                 <FormGroup className="mb-3">
                                     <InputGroup className="input-group-alternative">
                                         <InputGroupAddon addonType="prepend">
@@ -65,7 +82,7 @@ class ContactModal extends React.Component {
                                                 <i className="ni ni-email-83"/>
                                             </InputGroupText>
                                         </InputGroupAddon>
-                                        <Input placeholder="Email" type="email"/>
+                                        <Input placeholder="Email" type="email" required name="email"/>
                                     </InputGroup>
                                 </FormGroup>
                                 <FormGroup>
@@ -75,7 +92,7 @@ class ContactModal extends React.Component {
                                                 <i className="ni ni-single-copy-04"/>
                                             </InputGroupText>
                                         </InputGroupAddon>
-                                        <Input placeholder="Your message" type="textarea" rows="10"/>
+                                        <Input placeholder="Your message" type="textarea" rows="10" name="message"/>
                                     </InputGroup>
                                 </FormGroup>
                                 <FormGroup className="custom-control custom-checkbox mb-3">
@@ -90,7 +107,7 @@ class ContactModal extends React.Component {
                                     </label>
                                 </FormGroup>
                                 <FormGroup className={`box ${isBoxVisible ? "" : "d-none"}`}>
-                                    <label >File
+                                    <label > Picture
                                     <Input type="file" name="file" id="upload" />
                                     </label>
                                 </FormGroup>
@@ -98,7 +115,7 @@ class ContactModal extends React.Component {
                                     <Button
                                         className="my-4 btn-icon"
                                         color="primary"
-                                        type="button"
+                                        type="submit"
                                     >
                                         <span className="btn-inner--icon"><i className="ni ni-send"></i></span>
                                         <span className="btn-inner--text">Send</span>
@@ -109,7 +126,7 @@ class ContactModal extends React.Component {
                     </Card>
                 </div>
             </Modal>
-            < />
+            </>
         );
     }
 }
