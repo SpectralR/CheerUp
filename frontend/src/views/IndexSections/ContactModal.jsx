@@ -14,16 +14,15 @@ import {
     InputGroup,
     Modal,
 } from "reactstrap";
+import {API_URL} from "../../config";
 
 class ContactModal extends React.Component {
     constructor() {
         super();
         this.state = {
             defaultModal: false,
-            isBoxVisible: false,
             email: "",
             message: "",
-            image: ""
         };
     }
 
@@ -34,27 +33,34 @@ class ContactModal extends React.Component {
         });
     };
 
-    toggleBox = () =>{
-        this.setState(prevState => ({
-            isBoxVisible: !prevState.isBoxVisible
-        }));
-    };
+    onEmailChange(event) {
+        this.setState({email: event.target.value})
+    }
+
+    onMessageChange(event) {
+        this.setState({message: event.target.value})
+    }
+
+    onImageChange(event) {
+        this.setState({image: event.target.value})
+    }
 
     handleSubmit(event){
         event.preventDefault();
-        this.setState({
-            email: event.target.email.value,
-            message: event.target.message.value,
-            image: ""
-        });
+        fetch(`${API_URL}/mail`,{
+            method: 'POST',
+            headers: {'Accept': 'application/json', 'Content-Type': 'application/json', },
+            body: JSON.stringify(this.state)
+        }).then(res => res.json())
+          .then((result) =>{
+            this.toggleModal("formModal");
+          })
     };
 
-
     render() {
-        const { isBoxVisible } = this.state;
         return (
             <>
-            <Button className="btn-icon" color="secondary" size="lg" type="button"
+            <Button className="btn-icon" color="primary" size="lg" type="button"
                 onClick={() => this.toggleModal("formModal")}>
                 <span className="btn-inner--icon"><i className="ni ni-email-83"></i></span>
                 <span className="btn-inner--text">Contact me</span>
@@ -74,7 +80,7 @@ class ContactModal extends React.Component {
                             </div>
                         </CardHeader>
                         <CardBody className="px-lg-5 py-lg-5">
-                            <Form role="form" onSubmit={this.handleSubmit}>
+                            <Form role="form" onSubmit={this.handleSubmit.bind(this)}>
                                 <FormGroup className="mb-3">
                                     <InputGroup className="input-group-alternative">
                                         <InputGroupAddon addonType="prepend">
@@ -82,7 +88,7 @@ class ContactModal extends React.Component {
                                                 <i className="ni ni-email-83"/>
                                             </InputGroupText>
                                         </InputGroupAddon>
-                                        <Input placeholder="Email" type="email" required name="email"/>
+                                        <Input placeholder="Email" type="email" required name="email" onChange={this.onEmailChange.bind(this)}/>
                                     </InputGroup>
                                 </FormGroup>
                                 <FormGroup>
@@ -92,28 +98,13 @@ class ContactModal extends React.Component {
                                                 <i className="ni ni-single-copy-04"/>
                                             </InputGroupText>
                                         </InputGroupAddon>
-                                        <Input placeholder="Your message" type="textarea" rows="10" name="message"/>
+                                        <Input placeholder="Your message" type="textarea" rows="10" name="message" onChange={this.onMessageChange.bind(this)}/>
                                     </InputGroup>
-                                </FormGroup>
-                                <FormGroup className="custom-control custom-checkbox mb-3">
-                                    <input
-                                        className="custom-control-input"
-                                        id="customCheck1"
-                                        type="checkbox"
-                                        onChange={this.toggleBox}
-                                    />
-                                    <label className="custom-control-label" htmlFor="customCheck1">
-                                        Submit a picture
-                                    </label>
-                                </FormGroup>
-                                <FormGroup className={`box ${isBoxVisible ? "" : "d-none"}`}>
-                                    <label > Picture
-                                    <Input type="file" name="file" id="upload" />
-                                    </label>
                                 </FormGroup>
                                 <div className="text-center">
                                     <Button
                                         className="my-4 btn-icon"
+                                        id="btn-send-message"
                                         color="primary"
                                         type="submit"
                                     >

@@ -24,12 +24,11 @@ class Thanks extends React.Component {
   render() {
     return (
       <>
-        <section className="section section-lg section-nucleo-icons pb-250">
+        <section className="section section-nucleo-icons">
           <Container>
             <p className="lead">A big thanks to the following people! They deserve it!</p>
             <p><strong>SinisterLette</strong> for pushing me forward and choosing the pictures.</p>
             <p><strong><a href="https://www.creative-tim.com?ref=adsr-footer" target='_blank' rel="noopener noreferrer">Creative Tim</a></strong> for this wonderfull frontend template.</p>
-            <p><strong>XXX</strong> for letting us use their images.</p>
           </Container>
         </section>
       </>
