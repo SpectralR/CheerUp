@@ -50,7 +50,7 @@ class Index extends React.Component {
           </section>
           <Animals />
           <Contact />
-          <Thanks />
+          {/* <Thanks /> */}
         </main>
         <Footer />
       </>

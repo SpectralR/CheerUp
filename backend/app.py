@@ -1,11 +1,11 @@
-from flask import Flask, jsonify, request, abort
-from flask_mail import Mail, Message
+from flask import Flask, jsonify, request
+from flask_mail import Mail
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import random
 import os
 
-UPLOAD_FOLDER = 'image/'
+UPLOAD_FOLDER = 'image'
 ALLWOED_EXTENSIONS = set(['jpg', 'png'])
 
 app = Flask(__name__)
@@ -36,7 +36,20 @@ def send_email():
             body = 'from ' + msgData['email'] + '<br />' +msgData['message']
        )
    return jsonify({'success': 'mail sent'})
-    
+
+@app.route('/api/images', methods=['POST'])
+def send_images():
+    target = os.path.join(UPLOAD_FOLDER, 'submitted')
+    if not os.path.isdir(target):
+        os.mkdir(target)
+
+    image = request.files['image']
+    imageName = secure_filename(image.filename)
+    destination = "/".join([target, imageName])
+    image.save(destination)
+
+    return jsonify({"success": "image sent"})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -21,6 +21,7 @@ import React from "react";
 import { Row, Container } from "reactstrap";
 
 import ContactModal from "./ContactModal.jsx";
+import ImageModal from "./ImageModal.jsx";
 
 
 class Contact extends React.Component {
@@ -31,10 +32,11 @@ class Contact extends React.Component {
           <Container className="py-md">
             <Row className="justify-content-center align-items-center">
               <p className="lead">
-                If you want, or need, to talk, or just want to submit some images, you can contact my by clicking the button below.
+                If you want, or need, to talk, or just want to submit some images, you can contact me by clicking the button below.
                 I'm not a psychologist, but I can hear you out if it helps you to talk with someone!
               </p>
               <ContactModal/>
+              {/* <ImageModal /> */}
             </Row>
           </Container>
         </section>

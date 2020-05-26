@@ -1,0 +1,53 @@
+section{
+    &.animals{
+        .hidden{
+            display: none;
+        }
+        
+        .shown{
+            display: block;
+            width: 400px;
+            height: 400px;
+            margin-top: 4vh;
+            .card{
+                width: 100%;
+                height: 100%;
+                .card-body{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .btn{
+            padding: 0;
+            img{
+                width: auto;
+                height: 40px;
+            }
+        }
+        .fox{
+            svg{
+                position: relative;
+                path{
+                    position: absolute;
+                }
+                .a{
+                    fill:#D8D8D8;
+                }
+                .b{
+                    fill:#E76541;
+                }
+                .c{
+                    fill:#E49788;
+                }
+                .d{
+                    fill:#434849;
+                }
+                .e{
+                    fill:#FFF;
+                }
+            }
+        }
+    }
+}

@@ -55,7 +55,7 @@ class Image extends React.Component{
         return(
             <>
                 <Row className="row-grid justify-content-center align-items-center mt-lg image">
-                    <p>Click the button and you'll get a cheering up picture!</p>
+                    <p>Click the button for a cheerful picture!</p>
                 </Row>
                 <Row className="row-grid justify-content-center">
                     <Button onClick={() => this.getImage()} className="btn-icon btn-3" color="primary" type="button">

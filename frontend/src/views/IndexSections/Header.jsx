@@ -51,7 +51,7 @@ class Header extends React.Component {
                       style={{ width: "200px" }}
                     />
                     <p className="lead text-white">
-                      Welcome to Cheer Up, this website is built to help you cheering up in the moments you need it,
+                      Welcome to Cheer Up, this website is built to cheer you up in the moments you need it,
                       by showing you randoms, cheerful images!
                     </p>
                   </Col>
