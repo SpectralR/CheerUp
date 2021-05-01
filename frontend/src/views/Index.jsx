@@ -48,9 +48,9 @@ class Index extends React.Component {
               <Image />
             </Container>
           </section>
-          <Animals />
+          {/* <Animals /> */}
           <Contact />
-          {/* <Thanks /> */}
+          <Thanks />
         </main>
         <Footer />
       </>
