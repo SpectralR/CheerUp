@@ -43,13 +43,7 @@ class Footer extends React.Component {
               <Col md="6">
                 <div className="copyright">
                   © {new Date().getFullYear()}{" "}
-                  <a
-                    href="https://www.creative-tim.com?ref=adsr-footer"
-                    target="_blank"
-                  >
-                    Creative Tim
-                  </a>
-                  .
+                  <span>Spectral Requiem</span>
                 </div>
               </Col>
               <Col md="6">

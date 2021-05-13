@@ -44,12 +44,13 @@ class Header extends React.Component {
               <div className="col px-0">
                 <Row className="align-items-center justify-content-center">
                   <Col className="text-center" lg="6">
-                    <img
+                    {/* logo */}
+                    {/* <img
                       alt="..."
                       className="img-fluid"
                       src={require("assets/img/brand/argon-react-white.png")}
                       style={{ width: "200px" }}
-                    />
+                    /> */}
                     <p className="lead text-white">
                       Welcome to Cheer Up, this website is built to cheer you up in the moments you need it,
                       by showing you randoms, cheerful images!

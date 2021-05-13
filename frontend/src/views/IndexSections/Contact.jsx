@@ -21,8 +21,6 @@ import React from "react";
 import { Row, Container } from "reactstrap";
 
 import ContactModal from "./ContactModal.jsx";
-import ImageModal from "./ImageModal.jsx";
-
 
 class Contact extends React.Component {
   constructor(){
@@ -56,7 +54,6 @@ class Contact extends React.Component {
                 <a href="" id="emailField" ref={this.emailRef}></a>
               </p>
               <ContactModal/>
-              {/* <ImageModal /> */}
             </Row>
           </Container>
         </section>

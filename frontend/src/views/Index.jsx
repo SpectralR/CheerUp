@@ -29,7 +29,6 @@ import Header from "./IndexSections/Header.jsx";
 import Image from "./IndexSections/Image.jsx";
 import Contact from "./IndexSections/Contact.jsx";
 import Thanks from "./IndexSections/Thanks.jsx";
-import Animals from "./IndexSections/Animals.jsx";
 
 class Index extends React.Component {
   componentDidMount() {
@@ -48,7 +47,6 @@ class Index extends React.Component {
               <Image />
             </Container>
           </section>
-          {/* <Animals /> */}
           <Contact />
           <Thanks />
         </main>
