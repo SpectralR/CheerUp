@@ -20,7 +20,7 @@ import React from "react";
 // reactstrap components
 import { Row, Container } from "reactstrap";
 
-import ContactModal from "./ContactModal.jsx";
+// import ContactModal from "./ContactModal.jsx";
 
 class Contact extends React.Component {
   constructor(){
@@ -29,7 +29,7 @@ class Contact extends React.Component {
   }
 
   componentDidMount(){
-    let email = "bW9jfmxpYW1wb3kqcHVlbXJlZWhjCg==",
+    let email = "bW9jfmxpYW1nKmV0aXNiZXd+cHVyZWVoYwo=",
         string = atob(email),
         decodedEmail = string.replace('*','@').replace(/~/g, '.').split("").reverse().join(""),
         emailField = this.emailRef.current;
@@ -50,10 +50,10 @@ class Contact extends React.Component {
                 I'm not a psychologist, but I can hear you out if it helps you to talk with someone!
               </p>
               <p>
-                You can contact me through the website form by clicking the button below or, if you want to submit an image or something that isn't text, please use this email adresse : 
+                To contact me, please use this email adresse : 
                 <a href="" id="emailField" ref={this.emailRef}></a>
               </p>
-              <ContactModal/>
+              {/* <ContactModal/> */}
             </Row>
           </Container>
         </section>

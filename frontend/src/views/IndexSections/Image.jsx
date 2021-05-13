@@ -13,10 +13,10 @@ class Image extends React.Component{
 
     getImage(){
         let min = 1,
-            max = 5;
+            max = 10;
 
         this.setState({
-            image: process.env.PUBLIC_URL + 'images/image-' + Math.floor(Math.random() * (max - min + 1)) + min + '.jpg',
+            image: process.env.PUBLIC_URL + 'images/image-' + (Math.floor(Math.random() * (max - min + 1)) + min) + '.png',
             hide: false
         })
     }
@@ -28,7 +28,10 @@ class Image extends React.Component{
             return(
                 <>
                     <Row className="row-grid justify-content-center align-items-center mt-lg image">
-                        <img src={image} alt={image}/>
+                        <img src={image} alt={image} width="300" height="300"/>
+                    </Row>
+                    <Row className="row-grid justify-content-center align-items-center mt-lg image">
+                        <p>Click the button for a cheerful picture!</p>
                     </Row>
                     <Row className="row-grid justify-content-center">
                         <Button onClick={() => this.getImage()} className="btn-icon btn-3" color="primary" type="button">
