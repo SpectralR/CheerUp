@@ -27,7 +27,7 @@ class Thanks extends React.Component {
         <section className="section section-nucleo-icons">
           <Container>
             <p className="lead">A big thanks to the following people! They deserve it!</p>
-            <p><strong>SinisterLette</strong> for pushing me forward and choosing the pictures.</p>
+            {/* <p><strong>Robin Hood</strong> for the logo.</p> */}
             <p><strong><a href="https://www.creative-tim.com?ref=adsr-footer" target='_blank' rel="noopener noreferrer">Creative Tim</a></strong> for this wonderfull frontend template.</p>
           </Container>
         </section>

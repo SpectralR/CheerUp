@@ -25,6 +25,22 @@ import ImageModal from "./ImageModal.jsx";
 
 
 class Contact extends React.Component {
+  constructor(){
+      super();
+      this.emailRef = React.createRef();
+  }
+
+  componentDidMount(){
+    let email = "bW9jfmxpYW1wb3kqcHVlbXJlZWhjCg==",
+        string = atob(email),
+        decodedEmail = string.replace('*','@').replace(/~/g, '.').split("").reverse().join(""),
+        emailField = this.emailRef.current;
+
+    emailField.href = "mailto: " + decodedEmail;
+    emailField.innerHTML = decodedEmail;
+  }
+
+
   render() {
     return (
       <>
@@ -34,6 +50,10 @@ class Contact extends React.Component {
               <p className="lead">
                 If you want, or need, to talk, or just want to submit some images, you can contact me by clicking the button below.
                 I'm not a psychologist, but I can hear you out if it helps you to talk with someone!
+              </p>
+              <p>
+                You can contact me through the website form by clicking the button below or, if you want to submit an image or something that isn't text, please use this email adresse : 
+                <a href="" id="emailField" ref={this.emailRef}></a>
               </p>
               <ContactModal/>
               {/* <ImageModal /> */}

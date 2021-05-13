@@ -1,6 +1,4 @@
 import React from 'react';
-import { handleResponse } from "../../helpers";
-import { API_URL } from "../../config";
 import { Button, Row } from "reactstrap";
 
 class Image extends React.Component{
@@ -8,65 +6,59 @@ class Image extends React.Component{
         super();
 
         this.state = {
-            image: [],
-            error: null
+            image: 0,
+            hide: true
         }
     }
 
     getImage(){
-        fetch(`${API_URL}/random`, {
-            method: "GET",
-            headers: {
-                mode: "no-cors"
-            }
+        let min = 1,
+            max = 5;
+
+        this.setState({
+            image: process.env.PUBLIC_URL + 'images/image-' + Math.floor(Math.random() * (max - min + 1)) + min + '.jpg',
+            hide: false
         })
-            .then(handleResponse)
-            .then((data) => {
-                this.setState({
-                    image: data
-                })
-            })
-            .catch((error) => {
-               this.setState({error : error.errorMessage })
-            });
     }
 
     render(){
-        const {image, error} = this.state;
+        const {image, hide} = this.state;
 
-        if (error){
-            return <p>Erreur: {error.message}</p>
-        } else if (image.image) {
+        if (!hide){
             return(
                 <>
                     <Row className="row-grid justify-content-center align-items-center mt-lg image">
-                        <p>{image.image}</p>
+                        <img src={image} alt={image}/>
                     </Row>
                     <Row className="row-grid justify-content-center">
                         <Button onClick={() => this.getImage()} className="btn-icon btn-3" color="primary" type="button">
                             <span className="btn-inner--icon">
-                            <i className="ni ni-image" />
+                                <i className="ni ni-image" />
                             </span>
-                        <span className="btn-inner--text">Get an image</span>
+                            <span className="btn-inner--text">Get an image</span>
                         </Button>
                     </Row>
                 </>
-        )}
-        return(
-            <>
-                <Row className="row-grid justify-content-center align-items-center mt-lg image">
-                    <p>Click the button for a cheerful picture!</p>
-                </Row>
-                <Row className="row-grid justify-content-center">
-                    <Button onClick={() => this.getImage()} className="btn-icon btn-3" color="primary" type="button">
-                  <span className="btn-inner--icon">
-                    <i className="ni ni-image" />
-                  </span>
-                        <span className="btn-inner--text">Get an image</span>
-                    </Button>
-                </Row>
-            </>
-        );
+            )        
+        } else {
+            return(
+                <>
+                    <Row className="row-grid justify-content-center align-items-center mt-lg image">
+                    </Row>
+                    <Row className="row-grid justify-content-center align-items-center mt-lg image">
+                        <p>Click the button for a cheerful picture!</p>
+                    </Row>
+                    <Row className="row-grid justify-content-center">
+                        <Button onClick={() => this.getImage()} className="btn-icon btn-3" color="primary" type="button">
+                            <span className="btn-inner--icon">
+                                <i className="ni ni-image" />
+                            </span>
+                            <span className="btn-inner--text">Get an image</span>
+                        </Button>
+                    </Row>
+                </>
+            )
+        }
     }
 }
 
